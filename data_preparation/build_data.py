@@ -215,7 +215,7 @@ def gen_raw_seizure_pkl(args,tuh_eeg_szr_ver, anno_file):
     dev_test_data_dict = generate_data_dict(szr_annotation_file, dev_name, tuh_eeg_szr_ver)
     print('Number of seizures by type in the validation set...\n')
     print_type_information(dev_test_data_dict)
-    print('\n\n')f
+    print('\n\n')
 
     # Now we combine both
     print('Combining the training and validation set...\n')

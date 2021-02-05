@@ -40,7 +40,11 @@ def generate_data_dict(xlsx_file_name,sheet_name, tuh_eeg_szr_ver):
     col_n_stop = data.columns[13]
     col_o_szr_type = data.columns[14]
     train_files = data[[col_l_file_name, col_m_start,col_n_stop,col_o_szr_type]]
-    train_files = np.array(train_files.dropna())
+    train_files[col_m_start] = train_files[col_m_start].replace(np.nan, 0)
+    train_files[col_n_stop] = train_files[col_n_stop].replace(np.nan, 0)
+    train_files[col_o_szr_type] = train_files[col_o_szr_type].replace(np.nan, 'non-seizure') 
+    train_files.loc[train_files[col_o_szr_type] != 'non-seizure', col_o_szr_type] = 'seizure' 
+    train_files = np.array(train_files)
 
     for item in train_files:
         a = item[0].split('/')
@@ -69,16 +73,6 @@ def print_type_information(data_dict):
         total_dur = sum(dur_list)
         # l.append([szr_type, str(len(szr_info_list)), str(len(unique_patient_id_list)), str(total_dur)])
         l.append([szr_type, (len(szr_info_list)), (len(unique_patient_id_list)), (total_dur)])
-
-        #  numpy.asarray((unique, counts)).T
-        '''
-        if szr_type=='TNSZ':
-            print('TNSZ Patient ID list:')
-            print(np.asarray((unique_patient_id_list, counts)).T)
-        if szr_type=='SPSZ':
-            print('SPSZ Patient ID list:')
-            print(np.asarray((unique_patient_id_list, counts)).T)
-        '''
 
     sorted_by_szr_num = sorted(l, key=lambda tup: tup[1], reverse=True)
     print(tabulate(sorted_by_szr_num, headers=['Seizure Type', 'Seizure Num','Patient Num','Duration(Sec)']))
@@ -221,7 +215,7 @@ def gen_raw_seizure_pkl(args,tuh_eeg_szr_ver, anno_file):
     dev_test_data_dict = generate_data_dict(szr_annotation_file, dev_name, tuh_eeg_szr_ver)
     print('Number of seizures by type in the validation set...\n')
     print_type_information(dev_test_data_dict)
-    print('\n\n')
+    print('\n\n')f
 
     # Now we combine both
     print('Combining the training and validation set...\n')

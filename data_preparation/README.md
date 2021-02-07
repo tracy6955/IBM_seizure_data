@@ -14,8 +14,7 @@ Please download v1.4.0 and v1.5.2 from From https://www.isip.piconepress.com/pro
 
 ## Step 1: Build Data
 Raw seizure dataset contains seizure and no seizure data in different sampling rate. 
-'build_data.py' is to get the seizure data with different seizure types from raw dataset specified by 'base_dir' and 
-then use a common sampling rate (by default 250Hz) and save to 'save_data_dir'
+'build_data.py' is to get the all data with two types (seizure and non-seizure) from raw dataset specified by 'base_dir' and then use a common sampling rate (by default 250Hz) and save to 'save_data_dir'. We summarized the seizure data with 10 types as the exception of non-seizure data, and covered its original labeling as 'seizure'. 
 
 Exemplary usage:                        
 ```

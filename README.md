@@ -1,12 +1,10 @@
-# seizure-type-classification-tuh
+# seizure-type-classification-tuh-modification
 
-In this repo, it generated pre-processed dataset for TUH seizure type classification which has been used in below 2 papers:
-1. ["Seizure Type Classification using EEG signals and Machine Learning: Setting a benchmark"](https://arxiv.org/abs/1902.01012)
-2. ["SeizureNet: Multi-Spectral Deep Feature Learning for Seizure Type Classification"](https://arxiv.org/abs/1903.03232)
+In this repo, it generated pre-processed dataset for TUH seizure detection which has been used in the below paper:
+["SeizureNet: Multi-Spectral Deep Feature Learning for Seizure Type Classification"](https://arxiv.org/abs/1903.03232)
 
 For more details, please refer to: `data_preparation`
-
-## Cite us
+The code repository is sourced from the github repo ('https://github.com/IBM/seizure-type-classification-tuh'), we made several edits so that the code could be used to detect seizures (whether EEG data contains seizure), while the original post removed non-seizure entries, it only keeps those containing seizures.  
 
 ```
 @article{roy2019machine,
@@ -26,4 +24,4 @@ For more details, please refer to: `data_preparation`
 
 ```
 
-Contact: Jianbin Tang(jbtang@au1.ibm.com) if you have suggestions and questions. Thank you!
+Contact: Zixuan Chen (z627chen@uwaterloo.ca) if you have suggestions and questions. Thank you!
